@@ -31,4 +31,5 @@ urlpatterns = [
     path('mypage_info', views.mypage_info, name="mypage_info"),
     path('getCardDataForGuName', views.getCardDataForGuName, name="getCardDataForGuName"),
     path('getCardDataForDongName', views.getCardDataForDongName, name="getCardDataForDongName"),
+    path('goCommercialResult', views.goCommercialResult, name="goCommercialResult"),
 ]

@@ -12,7 +12,6 @@ def index(request):
         return render(request,"index.html")
 def gologin(request):
     return render(request, "login/login.html")
-
 @csrf_exempt
 def login(request):
     mapper = Mapper("semiProject/kosmo@192.168.0.117:1521/orcl")
@@ -50,9 +49,13 @@ def getCardDataForGuName(request):
     guName = [y for x in guName for y in x]
     print(guName)
     return render(request, "server/analysisCommercialServer.html",{"data":guName})
+
 def getCardDataForDongName(request):
     guName = request.GET["guName"]
     mapper = Mapper("semiProject/kosmo@192.168.0.117:1521/orcl")
     dongName = pd.Series.tolist(mapper.getDongName(guName))
     dongName = [y for x in dongName for y in x]
     return render(request, "server/analysisCommercialServer.html",{"data":dongName})
+
+def goCommercialResult(request):
+    return render(request, "analysis/analysisCommercialResult.html")

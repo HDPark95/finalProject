@@ -9,42 +9,45 @@
 <div style="overflow-y:auto;">
     <div class="container">
         <div class="row">
-            <div class="col-md-4 col-sm-6">
-                <form>
+            <div class="col-md-4 col-sm-6" >
+                <form action="goCommercialResult">
                     <label for="guName" class="tag" style="margin-top:10px">구 선택</label>
-                    <select name="sources" id="guName" class="custom-select sources" placeholder="구 선택">
-
+                    <select name="guName" id="guName" class="custom-select sources" placeholder="구 선택">
                     </select>
                     <label for="dongName" class="tag">동 선택</label>
-                    <select name="sources" id="dongName" class="custom-select sources" placeholder="동 선택">
+                    <select name="dongName" id="dongName" class="custom-select sources" placeholder="동 선택">
                     </select>
                     <label for="largeName" class="tag">업종 대분류 선택</label>
-                    <select name="sources" id="largeName" class="custom-select sources" placeholder="업종 대분류 선택">
-
+                    <select name="largeName" id="largeName" class="custom-select sources" placeholder="업종 대분류 선택">
                     </select>
                     <label for="middleName" class="tag">업종 선택</label>
-                    <select name="sources" id="middleName" class="custom-select sources" placeholder="업종 중분류 선택">
-
+                    <select name="middleName" id="middleName" class="custom-select sources" placeholder="업종 중분류 선택">
                     </select>
+                    <h5 style="color:#848CB5">추가 정보</h5>
+                    <label for="estateIndex" class="tag">부동산 지수</label>
+                    <select name="estateIndex" id="estateIndex" class="custom-select sources" placeholder="부동산 지수">
+                        <option>항목 선택</option>
+                        <option>매매지수</option>
+                        <option>전세지수</option>
+                        <option>지가지수</option>
+                    </select>
+                    <label for="moreInfo" class="tag">세금 / 금리 / 대출</label>
+                        <select name="moreInfo" id="moreInfo" class="custom-select sources" placeholder="지수 정보">
+                            <option>항목 선택</option>
+                            <option> 세금 </option>
+                            <option> 금리 </option>
+                            <option> 대출 </option>
+                        </select>
+                    <select id="moreInfoAdd" class="custom-select sources">
+                    </select>
+                    <div id="select_list" class="rowcontent">
+                        <h5 style="color:#848CB5">선택된 항목</h5>
+                    </div>
                     <input id="commercial" type="submit" class="button" value="분석 시작하기">
                 </form>
             </div>
         </div>
-    </div>
-    <div class="container" style="margin-bottom:70px;">
-        <div class="row">
-            <div class="col-md-4 col-sm-6">
-                <div class="serviceBox">
-                    <h3 class="title">분석 결과</h3>
-                    <div class="service-content">
-                        <p class="description">
-                            분석 결과가 없습니다. 조건을 선택하시고 분석 시작하기를 눌러주세요,
-                        </p>
-                        <div class="service-icon fa fa-globe"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div style="margin:100px"></div>
     </div>
 </div>
 <!-- Bootstrap core JavaScript -->

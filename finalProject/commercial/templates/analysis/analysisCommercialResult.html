@@ -1,0 +1,26 @@
+{% include 'common/header.html' %}
+<nav class="navbar col-12">
+    <a href="/">Home</a>
+    <a href="goProduct">매물검색</a>
+    <a href="#">경매</a>
+    <a href="gologin" id="login">로그인</a>
+</nav>
+<h1>상권분석 대시보드</h1>
+<div style="overflow-y:auto;">
+    <div class="container" style="top:50%;">
+        <div class="row">
+            <div class="serviceBox" >
+                <h3 class="title">분석 결과</h3>
+                <p class="description">
+                    분석 결과가 없습니다. 조건을 선택하시고 분석 시작하기를 눌러주세요,
+                </p>
+            </div>
+        </div>
+        <input style="bottom:10px;" type="button" onclick="location.href='goAnalysisCommercial'" value="뒤로가기">
+    </div>
+</div>
+<!-- Bootstrap core JavaScript -->
+{% load static %}
+<link href="{% static 'commercial/css/analysisCommercial.css'%}" rel="stylesheet">
+<script src="{% static 'commercial/js/analysisCommercial.js'%}"></script>
+{% include 'common/footer.html' %}
