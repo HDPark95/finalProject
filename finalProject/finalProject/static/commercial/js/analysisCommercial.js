@@ -1,0 +1,18 @@
+$.ajax({
+    url:"getCardDataForGuName",
+    success:function(d){
+        $("#guName").html(d);
+    },error:function(e){
+        console.log(e);
+    }
+})
+$("#guName").change(function(){
+    $.ajax({
+    url:"getCardDataForDongName?guName="+$(this).val(),
+    success:function(d){
+        $("#dongName").html(d);
+    },error:function(e){
+        console.log(e);
+    }
+})
+})

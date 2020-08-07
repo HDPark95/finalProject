@@ -1,0 +1,54 @@
+{% include 'common/header.html' %}
+<nav class="navbar col-12">
+    <a href="/">Home</a>
+    <a href="goProduct">매물검색</a>
+    <a href="#">경매</a>
+    <a href="gologin" id="login">로그인</a>
+</nav>
+<h1>상권분석 대시보드</h1>
+<div style="overflow-y:auto;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6">
+                <form>
+                    <label for="guName" class="tag" style="margin-top:10px">구 선택</label>
+                    <select name="sources" id="guName" class="custom-select sources" placeholder="구 선택">
+
+                    </select>
+                    <label for="dongName" class="tag">동 선택</label>
+                    <select name="sources" id="dongName" class="custom-select sources" placeholder="동 선택">
+                    </select>
+                    <label for="largeName" class="tag">업종 대분류 선택</label>
+                    <select name="sources" id="largeName" class="custom-select sources" placeholder="업종 대분류 선택">
+
+                    </select>
+                    <label for="middleName" class="tag">업종 선택</label>
+                    <select name="sources" id="middleName" class="custom-select sources" placeholder="업종 중분류 선택">
+
+                    </select>
+                    <input id="commercial" type="submit" class="button" value="분석 시작하기">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="margin-bottom:70px;">
+        <div class="row">
+            <div class="col-md-4 col-sm-6">
+                <div class="serviceBox">
+                    <h3 class="title">분석 결과</h3>
+                    <div class="service-content">
+                        <p class="description">
+                            분석 결과가 없습니다. 조건을 선택하시고 분석 시작하기를 눌러주세요,
+                        </p>
+                        <div class="service-icon fa fa-globe"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Bootstrap core JavaScript -->
+{% load static %}
+<link href="{% static 'commercial/css/analysisCommercial.css'%}" rel="stylesheet">
+<script src="{% static 'commercial/js/analysisCommercial.js'%}"></script>
+{% include 'common/footer.html' %}

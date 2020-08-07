@@ -1,0 +1,48 @@
+{% include 'common/header.html' %}
+<nav class="navbar col-12">
+  <a href="goAnalysis">분석</a>
+  <a href="goProduct">매물검색</a>
+  <a href="#">경매</a>
+  <a href="gologin" id="login">로그인</a>
+</nav>
+<div class="main col-12">
+  <h1>부동산 사이트</h1>
+  <h5>원하는 서비스를 선택해주세요.</h5>
+  <input type="hidden" id="session" value="{{request.session.userid}}">
+  <div class="main">
+    <div class="row">
+      <div class="container-1 item col-6" onclick="location.href='goAnalysis'">
+        <div class="btn btn-one div_span">
+          <span >상권분석</span>
+        </div>
+      </div>
+      <div class="container-2 item col-6" style="right:0;">
+        <div class="btn btn-two div_span" onclick="location.href='goProduct'">
+          <span style="margin:auto">매물 검색</span>
+        </div>
+      </div>
+      <div class="container-3 item col-6">
+        <div class="btn btn-three div_span" onclick="location.href='goMyPage'">
+          <span >내정보</span>
+        </div>
+      </div>
+      <div class="container-4 item col-6">
+        <div class="btn btn-four div_span">
+          <span >경매</span>
+        </div>
+      </div>
+      <!-- /#page-content-wrapper -->
+      <!-- /#wrapper -->
+    </div>
+    <div>
+      <h5 style="margin-top:10px">부동산 정책</h5>
+      <div id="news" style="overflow-x:auto;">
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Bootstrap core JavaScript -->
+{% load static %}
+<script src="{% static 'commercial/js/home.js'%}"></script>
+<link href="{% static 'commercial/css/main.css'%}" rel="stylesheet">
+{% include 'common/footer.html' %}
