@@ -8,9 +8,10 @@
 <h1>상권분석 대시보드</h1>
 <div style="overflow-y:auto;">
     <div class="container">
-        <div class="row">
+        <div class="rowshape">
             <div class="col-md-4 col-sm-6" >
                 <form action="goCommercialResult">
+                    {% include 'analysis/modal.html' %}
                     <label for="guName" class="tag" style="margin-top:10px">구 선택</label>
                     <select name="guName" id="guName" class="custom-select sources" placeholder="구 선택">
                     </select>
@@ -23,11 +24,14 @@
                     <label for="middleName" class="tag">업종 선택</label>
                     <select name="middleName" id="middleName" class="custom-select sources" placeholder="업종 중분류 선택">
                     </select>
-                    <h5 style="color:#848CB5">추가 정보</h5>
-                    <label for="estateIndex" class="tag">부동산 지수</label>
+                    <div class="row" style="width:100%">
+                    <h5 style="color:#848CB5;">추가 정보</h5><div style="width:38%"></div> <p id="myBtn" style="left:200px;color:#848CB5;">추가 정보 설명</p>
+                    </div>
+                    <div>
+                    <label for="estateIndex" class="tag">경제통계 지수</label>
                     <select name="estateIndex" id="estateIndex" class="custom-select sources" placeholder="부동산 지수">
                         <option>항목 선택</option>
-                        <option>매매지수</option>
+                        <option>생산자물가지수</option>
                         <option>전세지수</option>
                         <option>지가지수</option>
                     </select>
@@ -40,6 +44,7 @@
                         </select>
                     <select id="moreInfoAdd" class="custom-select sources">
                     </select>
+                    </div>
                     <div id="select_list" class="rowcontent">
                         <h5 style="color:#848CB5">선택된 항목</h5>
                     </div>
@@ -53,5 +58,10 @@
 <!-- Bootstrap core JavaScript -->
 {% load static %}
 <link href="{% static 'commercial/css/analysisCommercial.css'%}" rel="stylesheet">
+<link href="{% static 'commercial/css/modal.css'%}" rel="stylesheet">
+<link href="{% static 'commercial/css/c3.css'%}" rel="stylesheet">
+<script src="{% static 'commercial/js/d3.min.js'%}"></script>
+<script src="{% static 'commercial/js/c3.min.js'%}"></script>
 <script src="{% static 'commercial/js/analysisCommercial.js'%}"></script>
+<script src="{% static 'commercial/js/modal.js'%}"></script>
 {% include 'common/footer.html' %}

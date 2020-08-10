@@ -56,6 +56,5 @@ def getCardDataForDongName(request):
     dongName = pd.Series.tolist(mapper.getDongName(guName))
     dongName = [y for x in dongName for y in x]
     return render(request, "server/analysisCommercialServer.html",{"data":dongName})
-
 def goCommercialResult(request):
     return render(request, "analysis/analysisCommercialResult.html")
