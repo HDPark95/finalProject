@@ -11,6 +11,7 @@ $.ajax({
         console.log(e);
     }
 })
+
  $.ajax({
     url:"getCardDataForDongName?guName=도봉구",
     success:function(d){
@@ -19,22 +20,26 @@ $.ajax({
         console.log(e);
  }
  })
+
 $("#guName").change(function(){
     $.ajax({
     url:"getCardDataForDongName?guName="+$(this).val(),
     success:function(d){
+        console.log(d)
         $("#dongName").html(d);
     },error:function(e){
         console.log(e);
     }
+    })
 })
-})
+
 $("#moreInfoAdd").hide()
+
 $("#moreInfo").change(function(){
     var cate = $(this).val();
     var interestRates = "<option>정기예금금리</option><option>국고채(3년)</option><option>CD</option>"
     var tax = "<option>1년미만보유,세율</option><option>2년미만보유,세율</option><option>2년이상보유,1200만원이하,세율</option><option>2년이상보유,4600만원이하,세율</option><option>2년이상보유,8800만원이하,세율</option><option>2년이상보유,15000이하,세율</option>"
-    var loan = "<option>주택대출액</option><option>가계대출액</option>"
+    var loan = "<option>주택담보대출액</option>"
     if(cate == "세금"){
         $("#moreInfoAdd").html(tax)
         $("#moreInfoAdd").show()
@@ -48,12 +53,13 @@ $("#moreInfo").change(function(){
 })
 
 $("#moreInfoAdd").change(function(){
-    var add = "<a id='"+$(this).val()+"'class='btn btn-3 btn-sep icon-heart info col-4'>"+$(this).val() +"</a>"
+    var add = "<a id='"+$(this).val()+"'class='btn btn-3 btn-sep icon-heart info'>"+$(this).val() +"</a>"
     $("#select_list").append(add)
     removeA()
 })
+
 $("#estateIndex").change(function(){
-    var add = "<a class='btn btn-3 btn-sep icon-heart info col-4'>"+$(this).val() +"</a>"
+    var add = "<a class='btn btn-3 btn-sep icon-heart info'>"+$(this).val() +"</a>"
     $("#select_list").append(add)
     removeA()
 })
@@ -65,6 +71,7 @@ $("a").click(function(){
 	$.ajaxPrefilter('json', function(options, orig, jqXHR){
 		return 'jsonp';
 	});
+
 function getCDChart(){	$.ajax({
 		url         : 'http://ecos.bok.or.kr/api/StatisticSearch/UK7OYPB8FWIWM5LLJFYH/json/kr/1/10/028Y001/MM/202001/202007/BEEA21/',
 		type        : 'GET',
@@ -103,44 +110,18 @@ function getCDChart(){	$.ajax({
 			}
 		});
 	}
+
 function getLoan(){	$.ajax({
-		url         : 'http://ecos.bok.or.kr/api/StatisticSearch/UK7OYPB8FWIWM5LLJFYH/json/kr/1/10/008Y002/MM/202001/202007/11100A0/',
+		url         : 'getJuDamDataData',
 		type        : 'GET',
-		dataType    : 'json',
 		success     : function (result) {
-			makeBarChart2(result);
+            $("#tableJudamdaeLoan").html(result)
 		},
 		error       : function (result) {
 			console.log("error >> " + $(result).text());
 		}
-	});}
-	function makeBarChart2(jsonData) {
-		var rows = jsonData.StatisticSearch.row;
-		var datas = new Array();
-		var xColumn = new Array();
-		xColumn.push('x')
-		datas.push(rows[0].ITEM_NAME1);
-		for (var row in rows) {
-			xColumn.push(rows[row].TIME);
-			datas.push(rows[row].DATA_VALUE);
-		}
-		var chart = c3.generate({
-			bindto: '#chartLoan',
-			data : {
-				type : 'bar',
-				x : 'x',
-				columns : [
-				    xColumn,
-					datas
-				]
-			},
-			bar : {
-				width : {
-					radio : 0.5
-				}
-			}
-		});
-	}
+	});
+    }
 function getProduceChart(){
     var value1;
     var value2;
@@ -314,7 +295,6 @@ function getSalesData(){
 			}
 		});
 	}
-
 
 getTradeChart('http://ecos.bok.or.kr/api/StatisticSearch/UK7OYPB8FWIWM5LLJFYH/json/kr/1/10/901Y001/MM/202001/202007/AI1BE/','http://ecos.bok.or.kr/api/StatisticSearch/UK7OYPB8FWIWM5LLJFYH/json/kr/1/10/901Y001/MM/202001/202007/AI1BD/')
 getProduceChart()

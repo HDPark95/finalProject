@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.views.decorators.csrf import csrf_exempt
 import pandas as pd
+from . import crawling
 import numpy as np
 cardData = "";
 from .models import Mapper
@@ -48,13 +49,15 @@ def getCardDataForGuName(request):
     guName = pd.Series.tolist(mapper.getGuName())
     guName = [y for x in guName for y in x]
     print(guName)
-    return render(request, "server/analysisCommercialServer.html",{"data":guName})
-
+    return render(request, "server/analysisCommercialTagServer.html",{"data":guName})
 def getCardDataForDongName(request):
     guName = request.GET["guName"]
     mapper = Mapper("semiProject/kosmo@192.168.0.117:1521/orcl")
     dongName = pd.Series.tolist(mapper.getDongName(guName))
     dongName = [y for x in dongName for y in x]
-    return render(request, "server/analysisCommercialServer.html",{"data":dongName})
+    return render(request, "server/analysisCommercialTagServer.html",{"data":dongName})
 def goCommercialResult(request):
     return render(request, "analysis/analysisCommercialResult.html")
+def getJuDamLoanData(request):
+    result = crawling.getJuDanDaeLoanData()
+    return render(request, "server/analysisCommercialServer.html", {"value":result[0],"time":result[1]})

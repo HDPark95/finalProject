@@ -32,4 +32,5 @@ urlpatterns = [
     path('getCardDataForGuName', views.getCardDataForGuName, name="getCardDataForGuName"),
     path('getCardDataForDongName', views.getCardDataForDongName, name="getCardDataForDongName"),
     path('goCommercialResult', views.goCommercialResult, name="goCommercialResult"),
+    path('getJuDamDataData', views.getJuDamLoanData, name="getJuDamLoanData"),
 ]
