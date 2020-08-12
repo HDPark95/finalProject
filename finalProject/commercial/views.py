@@ -61,3 +61,33 @@ def goCommercialResult(request):
 def getJuDamLoanData(request):
     result = crawling.getJuDanDaeLoanData()
     return render(request, "server/analysisCommercialServer.html", {"value":result[0],"time":result[1]})
+def goCalc(request):
+    return render(request, "analysis/taxCalc.html")
+def getPriceCalc(request):
+    getPrice = request.GET.get('getPrice')
+    getTax = int(getPrice) * 0.04
+    specialTax = int(getPrice) * 0.002
+    eduTax = int(getPrice) * 0.004
+    totalTax = int(getPrice) * 0.046
+    result = [int(getPrice), int(getTax), int(specialTax), int(eduTax), int(totalTax)]
+    return render(request, "server/calcServer.html", {"result":result,"length":len(result)})
+def inheritTaxCalc(request):
+    getPrice = int(request.GET.get('getPrice'))
+    if getPrice <= 100000000:
+        tax_ratio = 0.1
+        deductible = 0
+    elif  getPrice <= 500000000:
+        tax_ratio = 0.2
+        deductible = 10000000
+    elif getPrice <= 1000000000:
+        tax_ratio = 0.3
+        deductible = 6000000
+    elif getPrice <= 3000000000:
+        tax_ratio = 0.4
+        deductible = 16000000
+    elif getPrice > 3000000000:
+        tax_ratio = 0.5
+        deductible = 46000000
+    total = getPrice * tax_ratio - deductible
+    result = [getPrice, int(tax_ratio*100), deductible, total]
+    return render(request, "server/calcServer.html", {"result":result,"length":len(result)})

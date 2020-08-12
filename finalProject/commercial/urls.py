@@ -33,4 +33,7 @@ urlpatterns = [
     path('getCardDataForDongName', views.getCardDataForDongName, name="getCardDataForDongName"),
     path('goCommercialResult', views.goCommercialResult, name="goCommercialResult"),
     path('getJuDamDataData', views.getJuDamLoanData, name="getJuDamLoanData"),
+    path('goCalc', views.goCalc, name="goCalc"),
+    path('getPriceCalc', views.getPriceCalc, name="getPriceCalc"),
+    path('inheritTaxCalc', views.inheritTaxCalc, name="inheritTaxCalc"),
 ]
