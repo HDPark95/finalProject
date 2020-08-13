@@ -25,13 +25,19 @@
     chatSocket.onmessage = function(e) {
         var data = JSON.parse(e.data);
         var message = data['message'];
+        var cate = data['cate'];
         var today = new Date();
         var month = today.getMonth()+1;
         var date = today.getDate();
         var hour = today.getHours();
         var minute = today.getMinutes();
-        var send =  "<div class='sent_msg' style='right:0;height:auto;min-width:150px;'> <p>"+message+"</p> <span class='time_date'>"+today.toLocaleString()+"</span> </div> </div><br><br>"
-        $('#chat-log').append(send);
+        if(cate == 'send'){
+            var send =  "<div class='sent_msg' style='right:0;height:auto;min-width:150px;'> <p>"+message+"</p> <span class='time_date'>"+today.toLocaleString()+"</span> </div> </div><br><br>"
+            $('#chat-log').append(send);
+        }else{
+            var resp =  "<div class='incoming_msg' style='left:0;height:auto;min-width:150px;'> <p>"+message+"</p> <span class='time_date'>"+today.toLocaleString()+"</span> </div> </div><br><br>"
+            $('#chat-log').append(resp);
+        }
     };
     chatSocket.onclose = function(e) {
         console.error('Chat socket closed unexpectedly');
@@ -47,7 +53,8 @@
         var message = messageInputDom.value;
         var message =
         chatSocket.send(JSON.stringify({
-            'message': message
+            'message': message,
+            'cate' : 'send',
         }));
         messageInputDom.value = '';
     };
